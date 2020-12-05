@@ -21,6 +21,9 @@ function! plugpac#begin()
   if exists('#PlugPac')
     autocmd! PlugPac
     augroup! PlugPac
+  endif
+
+  if exists('#PlugPacLazy')
     autocmd! PlugPacLazy
     augroup! PlugPacLazy
   endif
@@ -243,8 +246,8 @@ function! PackAddHandler(timer)
   let s:idx += 1
   if s:idx == len(s:repos_lazy)
     echom "lazy load done !"
-    autocmd! PlugPacLazy
-    augroup! PlugPacLazy
+    silent! autocmd! PlugPacLazy
+    silent! augroup! PlugPacLazy
   endif
 endfunction
 
